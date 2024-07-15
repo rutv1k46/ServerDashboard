@@ -20,9 +20,13 @@ export class NewTicketComponent {
   //   @ViewChild("form") private form?: ElementRef<HTMLFormElement>;
   private form = viewChild.required<ElementRef<HTMLFormElement>>("form");
   add = output<{ title: string; text: string }>();
+  enteredTitle = "";
+  enteredText = "";
 
-  onSubmit(title: string, text: string) {
-    this.add.emit({ title: title, text: text });
-    this.form()?.nativeElement.reset();
+  onSubmit() {
+    this.add.emit({ title: this.enteredTitle, text: this.enteredText });
+    // this.form()?.nativeElement.reset();
+    this.enteredTitle = "";
+    this.enteredText = "";
   }
 }
